@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  z-index: 10000;
+  user-select: none;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  background-color: black;
+  height: 0.2rem;
+  width: 0.2rem;
+  z-index: 1000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  z-index: 1000;
+
+  @apply rounded-full;
+}
+
+@media screen and (max-width: 640px) {
+  ::-webkit-scrollbar {
+    background-color: black;
+    height: 0;
+    width: 0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+    @apply rounded-full;
+  }
+}
+
+/* ABOUT SECTION */
+
+/* animated arrows */
+.scroll-arrow {
+  -webkit-animation: arrows-animation 4s infinite;
+  animation: arrows-animation 4s infinite;
+}
+
+.arrow-middle {
+  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -webkit-animation-direction: alternate;
+}
+
+.arrow-bottom {
+  animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-direction: alternate;
+}
+
+@keyframes arrows-animation {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes arrows-animation {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* horizontal scrolling containers */
+.scroll-section-outer {
+  overflow: hidden;
+}
+
+.scroll-section-inner {
+}
+
+.scroll-section {
+  height: 100vh;
+  width: 100vw;
+  /* @apply xl:p-32; */
+}
+
+/* navigation bar */
+.nav-item.active {
+  @apply text-stone-300;
+}
+
+.active-section-indicator {
+  opacity: 0;
+}
+
+.active-section-indicator.active {
+  opacity: 1;
+}
+
+/* SKILLS SECTION */
+/* typing animation */
+.typewritter {
+  overflow: hidden;
+  border-right: 0.15em solid whitesmoke;
+  white-space: nowrap;
+  letter-spacing: 0.09em;
+  animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+/* PROJECTS SECTION */
+/* tabs */
+.slide-out {
+  transform: translateX(50%);
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out, transform 0.4s ease-out;
+}
+
+.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out, transform 0.4s ease-in;
+}
+
+.tab-content {
+  transition: max-height 0.2s ease, opacity 0.5s ease-in-out;
+}
+
+.tab-content.visible {
+  display: block;
+  opacity: 1;
+}
+
+.tab-content.invisible {
+  opacity: 0;
+  max-height: 0;
+}
+
+.tab-content.visible {
+  max-height: 700px;
+}
+
+.tab.invisible {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.8s ease, transform 0.5s ease;
+}
+
+.tab.visible {
+  opacity: 1;
+  transition: opacity 0.8s ease, transform 0.5s ease;
+}
+
+.tab-arrow {
+  transition: transform 0.3s ease;
+}
+
+/* .mypic {
+  background-image: url("/mypic.png");
+  height: 600px;
+  width: 600px;
+} */
